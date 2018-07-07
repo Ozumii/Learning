@@ -1,0 +1,44 @@
+body{
+    font-family: "Open Sans", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+}
+
+#nav-bar{
+    list-style:none; 
+    
+}
+.table{
+    display: table;
+    margin: 0 auto;
+
+}
+
+ul#nav-bar li{
+    display: inline-block;
+    list-style: none;
+    font-size:20px;
+    padding: 10px;
+    
+}
+#nav-outer{
+  
+  background-color: #383E4C;
+  border-color: 383E4C;
+  top:0;
+  border-width: 0 0 1px;   
+  position:fixed;
+  right: 0;
+  left:0;
+  z-index: 1030;
+  text-align: center;
+  min-height: 50px
+}
+
+ul#nav-bar a{
+    position: relative;
+    display: block;
+    border: 1px solid #646d7c;
+    color:white;
+    padding: 15px 25px;
+
+}
