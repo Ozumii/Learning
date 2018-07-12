@@ -42,3 +42,8 @@ ul#nav-bar a{
     padding: 15px 25px;
 
 }
+
+#top-section{
+    background:url(../img/bg-1.jpg);
+    background-color: transparent;
+}
