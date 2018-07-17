@@ -36,8 +36,8 @@ function BMI(mass, height){
 
 }
 
-let dave = new Person("Dave", 75, 50);
-let mark = new Person("Mark", 40, 70);
+let dennis = new Person("Dennis", 75, 58);
+let jake = new Person("Jake", 40, 58);
 
 function compare(p1,p2){
 
