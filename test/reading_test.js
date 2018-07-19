@@ -28,13 +28,15 @@ describe('Reading users out of User database',()=>{
             done();
         });
 
-    // it('finds an id with a unique name',(done)=>{
-    //     User.find({name:'Ryan'})
-
-    //     .then((users)=>{
-            
-    //         done();
-    //         });
-    //     });
+   
     });
+    it('finds an id with a unique id',(done)=>{
+        //searches mongo for a unique id
+        User.findOne({_id:ryan._id})
+
+        .then((user)=>{
+            assert(user.name === 'Mark');
+            done();
+            });
+        });
 });
