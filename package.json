@@ -1,0 +1,27 @@
+{
+  "name": "learning",
+  "version": "1.0.0",
+  "description": "Working with Dennis",
+  "main": "app.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "nodemon --exec mocha -R min"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ozumii/Learning.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ozumii/Learning/issues"
+  },
+  "homepage": "https://github.com/Ozumii/Learning#readme",
+  "dependencies": {
+    "mocha": "^5.2.0",
+    "mongoose": "^5.2.4",
+    "nodemon": "^1.18.3"
+  }
+}
