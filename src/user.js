@@ -5,7 +5,16 @@ const Schema = mongoose.Schema;
 //this sets up what we should expect which gives us a model, these are like the properties that a User could have 
 const UserSchema = new Schema({
 
-    name:String
+    name:{
+          type:String,
+          validate:{
+                validator:(name)=> name.length>2,
+                message: 'Name must be greater than 2 characters.'
+          },
+    
+          required:[true,'Name is required.']
+        },
+    postCount:Number
 
 });
 
