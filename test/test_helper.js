@@ -19,3 +19,13 @@ mongoose.connection
 .on('error', (error)=>{
     console.warn('Warning',error);
 });
+
+//creating a hook to empty database when test is ran
+//without this hook the db will create a new entry that persists in the database. 
+//accepts run as a call back to let Mocha know it is ready to run the test
+beforeEach((done)=>{
+    //drop accepts a callback that will execute after the drop
+    mongoose.connection.collections.users.drop(()=>{
+        done();
+    });
+});
