@@ -20,9 +20,21 @@ describe('Reading users out of User database',()=>{
         User.find({name:'Ryan'})
         //after the search has concluded it then posts to the console to verify that the single user was found
         .then((users)=>{
-            console.log(users);
+           // console.log(users[0]._id);
+           // console.log(ryan._id);
+            //when calling the id use string to make the Objectid string readable
+            assert(users[0]._id.toString() === ryan._id.toString());
             //done called to allow mocha to move onto the next test if applicable
             done();
         });
+
+    // it('finds an id with a unique name',(done)=>{
+    //     User.find({name:'Ryan'})
+
+    //     .then((users)=>{
+            
+    //         done();
+    //         });
+    //     });
     });
 });
