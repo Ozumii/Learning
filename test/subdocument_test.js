@@ -13,7 +13,7 @@ describe('Subdocuments',()=>{
                     .then((user)=>{
 
                         assert(user.posts[0].title ==='Working in Mongo');
-                        console.log(user);
+                        //console.log(user);
                         done();
 
                 
@@ -55,6 +55,34 @@ describe('Subdocuments',()=>{
                                     done();
                                 });    
             
+        });
+
+        it('Can remove an existing subdocument',(done)=>{
+
+              //create user
+              const ryan = new User({
+                name:'Ryan',
+                //initializing this as an empty array for the test
+                posts:[{title:'New Title'}]
+            });
+
+            ryan.save()
+
+            .then(()=>User.findOne({name:'Ryan'}))
+
+                .then((user)=>{
+                    //const post = user.posts[0];
+                    //the remove() is added by mongoose
+                    //post.remove();
+                    user.posts[0].remove();
+                    return user.save();
+                })
+                .then(()=>User.findOne({name:'Ryan'}))
+                .then((user)=>{
+                    assert(user.posts.length=== 0,'Post has been deleted');
+                    done();
+                });
+
         });
 
 });
