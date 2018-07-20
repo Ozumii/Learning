@@ -15,9 +15,16 @@ const UserSchema = new Schema({
     
           required:[true,'Name is required.']
         },
-    postCount:Number,
-    posts:[PostSchema]
+        //todo: add a virtual property for postCount
+    
+    posts:[PostSchema],
+    likes:Number
 
+});
+
+//adding a virtual property
+UserSchema.virtual('postCount').get(function(){
+        return this.posts.length;
 });
 
 

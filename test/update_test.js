@@ -6,7 +6,7 @@ describe('Updating records',()=>{
     let ryan;
 
     beforeEach((done)=>{
-        ryan = new User({name:'Ryan', postCount:0});
+        ryan = new User({name:'Ryan', likes:0});
         ryan.save()
             .then(()=>{
                 done();
@@ -69,11 +69,11 @@ function assertName(operation,done){
     it('A user can have their postcount incremented by 1',(done)=>{
         //to do this use Mongo's update operators
         User.update(
-            {name:'Ryan'},{$inc:{postCount:10} })
+            {name:'Ryan'},{$inc:{likes:10} })
             .then(()=>{
                 User.findOne({name:'Ryan'})
                 .then((user)=>{
-                    assert(user.postCount === 10);
+                    assert(user.likes === 10);
                     done();
                 });
             });
