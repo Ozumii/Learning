@@ -1,12 +1,30 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const PostSchema = require('./postSchema');
 
 
 //this sets up what we should expect which gives us a model, these are like the properties that a User could have 
 const UserSchema = new Schema({
 
-    name:String
+    name:{
+          type:String,
+          validate:{
+                validator:(name)=> name.length>2,
+                message: 'Name must be greater than 2 characters.'
+          },
+    
+          required:[true,'Name is required.']
+        },
+        //todo: add a virtual property for postCount
+    
+    posts:[PostSchema],
+    likes:Number
 
+});
+
+//adding a virtual property
+UserSchema.virtual('postCount').get(function(){
+        return this.posts.length;
 });
 
 

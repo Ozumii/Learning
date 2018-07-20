@@ -13,6 +13,8 @@ describe('Reading users out of User database',()=>{
                 done();
             });
     });
+
+    
     //must be able to find users by name
     //done is called to allow for the db to search
     it('finds all users by name',(done)=>{
@@ -35,7 +37,7 @@ describe('Reading users out of User database',()=>{
         User.findOne({_id:ryan._id})
 
         .then((user)=>{
-            assert(user.name === 'Mark');
+            assert(user.name === 'Ryan');
             done();
             });
         });
