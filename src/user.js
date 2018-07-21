@@ -18,13 +18,27 @@ const UserSchema = new Schema({
         //todo: add a virtual property for postCount
     
     posts:[PostSchema],
-    likes:Number
+    likes:Number,
+    blogPosts:[{
+        type:Schema.Types.ObjectId,
+        ref:'blogPost'
+    }]
 
 });
 
 //adding a virtual property
 UserSchema.virtual('postCount').get(function(){
         return this.posts.length;
+});
+
+UserSchema.pre('remove',function(next){
+    const BlogPost = mongoose.model('blogPost');
+    //$in is a mongo function to iterate through a record
+    //console.log('contains: ' + this.blogPosts);
+
+    BlogPost.remove({_id:{ $in:this.blogPosts}})
+    .then(()=>next());
+
 });
 
 

@@ -31,7 +31,14 @@ mongoose.connection
 //accepts run as a call back to let Mocha know it is ready to run the test
 beforeEach((done)=>{
     //drop accepts a callback that will execute after the drop
-    mongoose.connection.collections.users.drop(()=>{
-        done();
+    const{users,comments,blogposts} = mongoose.connection.collections;
+
+    users.drop(()=>{
+        comments.drop(()=>{
+           blogposts.drop(()=>{
+               done();
+            });
+        });
+       
     });
 });
