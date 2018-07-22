@@ -4,11 +4,18 @@ const User = require('../src/user');
 
 describe('Reading users out of User database',()=>{
     //creates user in describe block to be referenced in other blocks
-    let ryan;
+    let ryan,alex,joe,maria;
 
     beforeEach((done)=>{
-        ryan = new User({name:'Ryan'});
-        ryan.save()
+
+        
+            ryan = new User({name:'Ryan'});
+            alex = new User({name:'Alex'});
+            joe = new User({name:'Joe'});
+            maria = new User({name:'Maria'});
+
+        Promise.all(
+           [ ryan.save(),alex.save(),joe.save(),maria.save()])
             .then(()=>{
                 done();
             });
@@ -41,4 +48,19 @@ describe('Reading users out of User database',()=>{
             done();
             });
         });
+    
+    it('Should skip and limit the result sets',()=>{
+        //alex,maria,joe,ryan=> should return maria,joe
+        User.find({})
+        .sort({name: 1})
+            .skip(1)
+                .limit(2)
+        .then((users)=>{
+            console.log(users)
+            assert(users.length === 2);
+            assert(users[0].name === 'Alex');
+            assert(user[1].name==='Joe');
+            done();
+        });
+    });
 });
