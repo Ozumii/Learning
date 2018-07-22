@@ -34,6 +34,8 @@ beforeEach((done)=>{
     const{users,comments,blogposts} = mongoose.connection.collections;
 
     users.drop(()=>{
+
+        //added in comment/blogpost to drop collections, interfered wiht the middleware test for dropping collections
         comments.drop(()=>{
            blogposts.drop(()=>{
                done();

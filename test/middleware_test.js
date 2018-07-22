@@ -28,13 +28,14 @@ describe('Middleware',()=>{
     });
 
     it( 'Users clean up dangling blogposts on remove',(done)=>{
-        
+        //count will be deprecated in future versions, will need to figure out a new way of doing this
+        //test initially was not working due to my test_helper.js file not dropping the database initially.
         ryan.remove()
         .then(()=>BlogPost.count())
         .then((count)=>{
             assert(count ===0);
             done();
-        })
+        });
 
         
     });
